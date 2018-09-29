@@ -133,7 +133,6 @@ DIALER_MANIFEST_FILES += \
 	$(BASE_DIR)/dialer/app/AndroidManifest.xml \
 	$(BASE_DIR)/dialer/app/manifests/activities/AndroidManifest.xml \
 	$(BASE_DIR)/dialer/app/voicemail/error/AndroidManifest.xml \
-	$(BASE_DIR)/dialer/backup/AndroidManifest.xml \
 	$(BASE_DIR)/dialer/blocking/AndroidManifest.xml \
 	$(BASE_DIR)/dialer/callcomposer/AndroidManifest.xml \
 	$(BASE_DIR)/dialer/callcomposer/camera/AndroidManifest.xml \
@@ -196,12 +195,6 @@ LOCAL_SRC_FILES := $(call all-java-files-under, $(SRC_DIRS))
 LOCAL_SRC_FILES := $(filter-out $(EXCLUDE_FILES),$(LOCAL_SRC_FILES))
 LOCAL_SRC_FILES += $(call all-proto-files-under, $(SRC_DIRS))
 LOCAL_SRC_FILES += $(call all-Iaidl-files-under, $(SRC_DIRS))
-
-# Backup Library
-BACKUP_LIB_SRC_DIR := ../../../external/libbackup/src/com/google/android/libraries/backup
-EXCLUDE_BACKUP_LIB_SRCS := $(call all-java-files-under, $(BACKUP_LIB_SRC_DIR)/shadow)
-LOCAL_SRC_FILES += $(call all-java-files-under, $(BACKUP_LIB_SRC_DIR))
-LOCAL_SRC_FILES := $(filter-out $(EXCLUDE_BACKUP_LIB_SRCS),$(LOCAL_SRC_FILES))
 
 LOCAL_PROTOC_FLAGS := --proto_path=$(LOCAL_PATH)
 
@@ -382,8 +375,6 @@ RES_DIRS :=
 DIALER_MANIFEST_FILES :=
 PROCESSOR_LIBRARIES_TARGET :=
 PROCESSOR_JARS :=
-BACKUP_LIB_SRC_DIR :=
-EXCLUDE_BACKUP_LIB_SRCS :=
 
 # Create references to prebuilt libraries.
 include $(CLEAR_VARS)
